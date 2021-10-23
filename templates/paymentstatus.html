@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block title%} payment status{% endblock %}
+{% block body %}
+<div class="container">
+    {{response}}
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item active" aria-current="page">
+                <h5> Transaction ID-{{response.TXNID}}</h5>
+            </li>
+        </ol>
+    </nav>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item active" aria-current="page">
+                <h5> Date-{{response.TXNDATE}}</h5>
+            </li>
+        </ol>
+    </nav>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item active" aria-current="page">
+                <h5> Transaction Amount is-{{response.TXNAMOUNT}}</h5>
+            </li>
+        </ol>
+    </nav>
+    <div class="col my-4">
+
+        <h2>Payment status regarding your order Id {{response.ORDERID}}</h2>
+        {% if response.RESPCODE == '01' %}
+        <h1>ORDER SUCCESS</h1>
+        {% else %}
+        <h1>ORDER FAILURE</h1>
+        {% endif%}
+
+    </div>
+
+</div>
+
+{% endblock body%}

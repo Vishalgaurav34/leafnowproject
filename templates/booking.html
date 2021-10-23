@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block title %} My booking{% endblock title %}
+{% block body %}
+
+<center><h1>Welcome to my booking</h1></center>
+<div class="container">
+  {% for order in orders %}
+  {% if order.paid%}
+  <div class="card mb-3">
+      <div style="background-color: rgb(36, 216, 186) ;" class="row no-gutters">
+        
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title">NAME: {{order.name}}</h5>
+            <p class="card-text">EMAIL: {{order.email}}</p>
+            <p class="card-text">PHONE NO: {{order.phone}}</p>
+            <p class="card-text">CARTYPE : {{order.carname}}</p>
+            <p class="card-text">COST/: {{order.amount}}</p>
+            <p class="card-text">TOTAL _AMOUNT_PAID: {{order.total}}(including gst/)</p>
+
+            <pclass="card-text">PICKUP_DATE</pclass>  {{order.pickup_date}}  </p>
+            <pclass="card-text">DROP_DATE</pclass>  {{order.drop_date}}  </p>
+            
+            <p class="card-text">PICKUP ADDRESS: {{order.pickup_address}}</p>
+            
+              <button type="button" class="btn btn-success">Paid</button>
+            
+              <!-- <a href="/Proceed_to_pay/{{order.Corder_id}}/{{order.amount}}"<button type="button" class="btn btn-danger">Proceed to Pay</button></a> -->
+           
+            <a href="/cancel/{{order.Corder_id}}"<button type="button" class="btn btn-primary">Cancel Booking</button>></a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor order in orders %}
+</div>
+{% endblock body %}
